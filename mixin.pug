@@ -1,0 +1,18 @@
+mixin article(data)
+  if !data.writer
+    p no wreter yet
+  else   
+    p #{data.book} by #{data.writer}
+    p= `${data.book } by ${data.writer}`
+    p= data.book + " by " + data.writer
+
+doctype html 
+html 
+  head 
+  body 
+    div 
+      - const staff = {writer: "yao", book: "game of heaven"}
+      +article(staff)
+      - const staff2 = {writer: "Jo", book: "game of hell"}
+      +article(staff2)
+      +article({})

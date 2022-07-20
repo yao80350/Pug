@@ -1,0 +1,49 @@
+doctype html 
+html
+    head
+        mate(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Pug
+        link(rel="stylesheet" href="style.css")
+        style. 
+            .copy {
+                color: red;
+            }
+    body
+        .container 
+            h1#title Pug Learning
+            p.copy(data-js=`${1 > 2 ? "great": "small"}`) content one 
+            p.copy. 
+                content 
+                two
+            p.copy 
+                | content
+                strong three
+            - const classes = ["class1", "class2", "class3"]   
+            - const attr = {type: "text", name: "fristName"} 
+            form.myForm(class=classes)
+                input&attributes(attr)  
+            - const styles = {color: "red", "background-color": "blue"} 
+            div(style=styles)
+
+            - const numbers = [1, 2, 3]
+            ul
+                each n, i in numbers
+                    li= n + " - " + i
+
+            - const detial = {"frist name": "yao", "last name": "chan"}
+            ul 
+                for n, i in detial
+                    li= i + ": " + n 
+                else 
+                    li no users yet
+
+            - const user = { name: "yao", loggedIn: flase, lostLogin: 2}
+            if user.loggedIn 
+                p Welcome back #{user.name}
+            else if user.lostLogin < 5
+                p Your lasy login is #{user.lostLogin} minutes ago
+            else 
+                a(href="/login") Log In
+
